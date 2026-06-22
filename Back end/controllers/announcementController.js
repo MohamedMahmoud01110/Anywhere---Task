@@ -24,16 +24,18 @@ exports.getAnnouncements = async (req, res) => {
   const total = await Announcement.countDocuments(query);
 
   const announcements = await Announcement.find(query)
-    .sort({ createdAt: -1 })
+    .sort({ createdAt: -1 }) // sort by the show the latest at first
     .skip((pageNum - 1) * limitNum)
     .limit(limitNum);
 
   res.json({
     status: "success",
-    data: {
+    stats: {
       total,
       page: pageNum,
       totalPages: Math.ceil(total / limitNum),
+    },
+    data: {
       announcements,
     },
   });
@@ -75,6 +77,5 @@ exports.deleteAnnouncement = async (req, res) => {
   res.status(204).json({
     status: "success",
     message: "deleted successfully",
-    data: null,
   });
 };
