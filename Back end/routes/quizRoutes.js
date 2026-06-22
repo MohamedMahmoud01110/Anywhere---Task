@@ -43,3 +43,4 @@ router.post(
   "/:id/questions/:questionId/submit",
   catchAsync(quizController.submitAnswer),
 );
+module.exports = router;

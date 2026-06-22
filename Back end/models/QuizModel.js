@@ -27,7 +27,7 @@ const QuestionSchema = new mongoose.Schema(
 
 const quizSchema = new mongoose.Schema({
   doctorName: { type: String, required: true },
-  course: { type: String, require: true },
+  course: { type: String, required: true },
   time: { type: Number, required: true }, // in minutes
   questions: { type: [QuestionSchema], default: [] },
   questionCount: { type: Number, default: 0 },

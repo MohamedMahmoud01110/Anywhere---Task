@@ -4,8 +4,8 @@ module.exports = function validateQuizAndQuestions(req, res, next) {
   // validate a single question object
   const check = (q) => {
     // validate question text
-    if (!q.qut || typeof q.qut !== "string")
-      return "Question text (qut) is required";
+    if (!q.question || typeof q.question !== "string")
+      return "Question text (question) is required";
 
     // validate options array (must be 4 choices)
     if (!Array.isArray(q.options) || q.options.length !== 4)
