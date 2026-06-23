@@ -57,6 +57,7 @@ export default function Message({ name, className, desc, img }: MessageProps) {
             fontSize: "0.875rem",
             color: "#979797",
             lineHeight: 1.65,
+            pt:2
           }}
         >
           {desc}

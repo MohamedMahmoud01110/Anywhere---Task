@@ -1,34 +1,7 @@
 import { Button, Paper, Stack, Typography, Skeleton } from "@mui/material";
-import userImage from "../assets/userImage.jpeg";
 import Message from "./Message";
 import { useEffect, useState } from "react";
 import { getAnnouncements } from "../api/AnnouncementApi";
-const messages = [
-  {
-    name: "Mr. Ahmed Mostafa",
-    className: "Math 101",
-    desc: "Hi my heroes! I just want you ready to our exams and focus on remaining assessments to gain more grades. good luck my warriors! 😊",
-    img: userImage,
-  },
-  {
-    name: "Mrs. Salma Ahmed",
-    className: "Physics 02",
-    desc: "Hello my students, I want to announce that the next quiz will be within 3 days and will cover the whole unit 2: Add and subtract number. Study hard Good luck :)",
-    img: userImage,
-  },
-  {
-    name: "School management",
-    className: "Management",
-    desc: "Goooooooooooood morning, Warriors! That get-ready-for-the-day call is heard each morning by 850 students at Goodwyn Junior High School. Have a great day!",
-    img: userImage,
-  },
-  {
-    name: "Events Manager",
-    className: "Events",
-    desc: "Hellooo, Can't wait our upcoming trip on the next weekend. The trip will be to Dreampark and Pyramids :D to book your seat please contact your class teacher.",
-    img: userImage,
-  },
-];
 
 export default function Announcement() {
   const [loading, setLoading] = useState(true);
@@ -58,10 +31,12 @@ export default function Announcement() {
       }}
     >
       <Stack
-        direction="row"
-        alignItems="flex-start"
-        justifyContent="space-between"
-        sx={{ mb: 3 }}
+        sx={{
+          direction: "row",
+          alignItems: "flex-start",
+          justifyContent: "space-between",
+          mb: 0,
+        }}
       >
         <Stack spacing={0.5}>
           <Typography
@@ -97,22 +72,23 @@ export default function Announcement() {
       </Stack>
 
       <Stack spacing={3.25}>
-        
         {loading ? (
-  <>
-    <Skeleton variant="rounded" height={90} />
-    <Skeleton variant="rounded" height={90} />
-    <Skeleton variant="rounded" height={90} />
-  </>
-) :announcements.map((msg) => (
-          <Message
-            key={msg._id}
-            name={msg.doctorName}
-            className={msg.course}
-            desc={msg.message}
-            img={msg.avatar}
-          />
-        ))}
+          <>
+            <Skeleton variant="rounded" height={90} />
+            <Skeleton variant="rounded" height={90} />
+            <Skeleton variant="rounded" height={90} />
+          </>
+        ) : (
+          announcements.map((msg) => (
+            <Message
+              key={msg._id}
+              name={msg.doctorName}
+              className={msg.course}
+              desc={msg.message}
+              img={msg.avatar}
+            />
+          ))
+        )}
       </Stack>
     </Paper>
   );

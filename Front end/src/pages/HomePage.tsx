@@ -68,8 +68,8 @@ export default function HomePage() {
             boxShadow: "0 12px 40px rgba(21, 101, 192, 0.12)",
           }}
         >
-          <Stack spacing={4} alignItems="center" textAlign="center">
-            <Stack spacing={1.5} alignItems="center">
+          <Stack spacing={4} sx={{ alignItems:"center", textAlign:"center"}}>
+            <Stack  spacing={1.5} sx={{ alignItems: "center" }}>
               <Typography
                 variant="overline"
                 sx={{
@@ -98,7 +98,7 @@ export default function HomePage() {
                   backgroundClip: "text",
                 }}
               >
-                Welcome to Coligo 
+                Welcome to Coligo
               </Typography>
               <Typography
                 variant="body1"
@@ -135,7 +135,7 @@ export default function HomePage() {
                 >
                   <Stack spacing={1}>
                     {feature.icon}
-                    <Typography variant="subtitle1" fontWeight={700}>
+                    <Typography sx={{ variant:"subtitle1", fontWeight:700}}>
                       {feature.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
