@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
 const path = require("path");
-
+const cors = require("cors");
 const announcementsRoute = require("./routes/announcementRoutes");
 const quizzesRoute = require("./routes/quizRoutes");
 
@@ -11,6 +11,12 @@ const app = express();
 
 // body parser
 app.use(express.json());
+
+// cors
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "http://localhost:5173",
+  credentials: true,
+}));
 
 // security headers
 app.use(
