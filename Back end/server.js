@@ -11,26 +11,18 @@ const DB = process.env.DATABASE.replace(
 
 const port = process.env.PORT || 3000;
 
-const server = app.listen(port, async () => {
+async function startServer() {
   try {
     await mongoose.connect(DB);
     console.log("DB connection successful");
-    console.log(`Server running on port ${port}`);
+
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
   } catch (err) {
     console.error("DB connection error:", err);
+    process.exit(1);
   }
-});
+}
 
-// handle unhandled promise rejection
-process.on("unhandledRejection", (err) => {
-  console.log(err.name, err.message);
-  console.log("Unhandled rejection");
-  server.close(() => process.exit(1));
-});
-
-// handle uncaught exception
-process.on("uncaughtException", (err) => {
-  console.log(err.name, err.message);
-  console.log("Uncaught exception");
-  process.exit(1);
-});
+startServer();
