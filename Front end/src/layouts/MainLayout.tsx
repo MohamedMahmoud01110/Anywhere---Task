@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import RequireAuth from "../components/requireAuth";
+import RequireAuth from "../components/RequireAuth";
 
 function MainLayout() {
   return (
